@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { baseUrl } from '../apiRoot/baseUrl';
 import { IProducts } from '../interfaces/http';
@@ -8,12 +8,18 @@ import { NotifecationsService } from './notifecations.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService implements OnChanges {
 
   constructor(
     private _httpClient: HttpClient,
     private _notifecationsService : NotifecationsService
   ) { };
+
+
+  ngOnChanges(): void {
+    this.countOfCart;
+  }
+
 
   countOfCart: BehaviorSubject<number>=  new BehaviorSubject(
     (
