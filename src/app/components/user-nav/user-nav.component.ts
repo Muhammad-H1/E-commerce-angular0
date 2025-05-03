@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
@@ -20,7 +20,7 @@ import { CartService } from '../../core/service/cart.service';
     encapsulation: ViewEncapsulation.None
 
 })
-export class UserNavComponent {
+export class UserNavComponent implements OnChanges {
   items: MenuItem[] | undefined;
   logOut: boolean= false;
   userName: string= '';
@@ -34,6 +34,9 @@ export class UserNavComponent {
     // private _:RouterLinkActive
   ){
 
+  }
+  ngOnChanges(): void {
+    this.getUserCartCount();
   }
 
   ngOnInit() {
