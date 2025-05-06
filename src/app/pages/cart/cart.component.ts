@@ -17,7 +17,7 @@ import { UserNavComponent } from '../../components/user-nav/user-nav.component';
 })
 export class CartComponent {
   allCartProducts: IProducts[] = [];
-
+  isHart: boolean = false;
   constructor(){}
 
   ngOnInit() {
@@ -29,9 +29,6 @@ export class CartComponent {
   }
 
   clearCart(): void{
-
-
-
     localStorage.removeItem('cartState');
     this.allCartProducts= [];
   }
